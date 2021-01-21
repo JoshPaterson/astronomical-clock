@@ -43,14 +43,38 @@ svg {
     }
     .face .ticks circle {
         stroke: black;
-        stroke-width: .15%;
+        stroke-width: .1%;
         fill: transparent;
     }
-    .face .ticks line.minute-tick {
+    .face .ticks line.minute {
         stroke: black;
         stroke-width: .25%;
     }
-    .face .ticks line.hour-tick {
+    .face .ticks line.hour {
         stroke: black;
         stroke-width: .3%;
+    }
+    @keyframes rotate {
+        100% {transform: rotateZ(360deg);}
+    }
+    .hands {
+        stroke-linecap: round;
+    }
+    .hands .minute {
+        stroke: black;
+        stroke-width: .5%;
+        animation: rotate 3600s infinite linear;
+        transform-origin: 50% 50%;
+    }
+    .hands .hour {
+        stroke: black;
+        stroke-width: .5%;
+        animation: rotate 86400s infinite linear;
+        transform-origin: 50% 50%;
+    }
+    .hands .second {
+        stroke: black;
+        stroke-width: .2%;
+        animation: rotate 60s infinite steps(300);
+        transform-origin: 50% 50%;
     }
