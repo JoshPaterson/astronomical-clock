@@ -23,11 +23,44 @@ var nauticalLHA =LHA(-6/360*tau, sunDec/360*tau, latitudeRad);
 var astronomicalLHA =LHA(-12/360*tau, sunDec/360*tau, latitudeRad);
 var nightLHA =LHA(-18/360*tau, sunDec/360*tau, latitudeRad);
 
+function addNumbers() {
+    for (var i=0; i<24; i++) {
+        var radians = i/24*tau;
+        var radius = 44;
+        var x = 50 + radius * Math.sin(-radians);
+        var y = 50 + radius * Math.cos(-radians);
+        $(".numbers").append(`\n<text x="${x}" y="${y}">${i}</text>`)
+    }
+}
+
+function addTicks() {
+    var outer = 49;
+    var middle = 48;
+    var inner = 47;
+    var cx = 50;
+    var cy = 50;
+    for (var i=0; i<120; i++) {
+        var radians = i/120*tau;
+        if (i%10 == 0) {
+            // even hours
+            $(".ticks").append(`<line class="hour-tick" x1="${cx + outer * Math.sin(-radians)}" x2="${cx + inner * Math.sin(-radians)}" y1="${cy + outer * Math.cos(-radians)}" y2="${cy + inner * Math.cos(-radians)}" />`)
+        } else if (i%10 == 5) {
+            // odd hours
+            $(".ticks").append(`<line class="hour-tick" x1="${cx + middle * Math.sin(-radians)}" x2="${cx + inner * Math.sin(-radians)}" y1="${cy + middle * Math.cos(-radians)}" y2="${cy + inner * Math.cos(-radians)}" />`)
+        } else if (i%2 == 0) {
+            // minutes
+            $(".ticks").append(`<line class="minute-tick" x1="${cx + outer * Math.sin(-radians)}" x2="${cx + middle * Math.sin(-radians)}" y1="${cy + outer * Math.cos(-radians)}" y2="${cy + middle * Math.cos(-radians)}" />`)
+        }
+    }
+}
 
 $(document).ready(function(){
     $(".civil").attr("d", sectorPath(civilLHA));
     $(".nautical").attr("d", sectorPath(nauticalLHA));
     $(".astronomical").attr("d", sectorPath(astronomicalLHA));
     $(".night").attr("d", sectorPath(nightLHA));
+    addNumbers();
+    addTicks();
+    $("body").html($("body").html());
 });
 

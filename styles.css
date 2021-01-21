@@ -17,21 +17,40 @@ svg {
     left:0;
     height:100%;
     width:100%;
-    background-color: #181874;
+    background-color: hsl(219, 85%, 21%);
 }
     .face circle.day {
-        fill: #2d2dcd;
+        fill: hsl(225, 80%, 40%);
         filter: drop-shadow(.1vmin .1vmin .1vmin black);
     }
     .face path.civil {
-        fill: #2828b4;
+        fill: hsl(225, 80%, 35%);
     }
     .face path.nautical {
-        fill: #23239b;
+        fill: hsl(225, 80%, 30%);
     }
     .face path.astronomical {
-        fill: #1d1d82;
+        fill: hsl(225, 80%, 25%);
     }
     .face path.night {
-        fill: #171769;
+        fill: hsl(225, 80%, 20%);
+    }
+    .face .numbers {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        font-size: 25%;
+    }
+    .face .ticks circle {
+        stroke: black;
+        stroke-width: .15%;
+        fill: transparent;
+    }
+    .face .ticks line.minute-tick {
+        stroke: black;
+        stroke-width: .25%;
+    }
+    .face .ticks line.hour-tick {
+        stroke: black;
+        stroke-width: .3%;
     }
